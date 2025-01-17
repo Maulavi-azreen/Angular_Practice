@@ -1,0 +1,20 @@
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .dark-navbar {
+    background-color: #222 !important;
+    color: white !important;
+  }
+  
+  .dark-navbar a {
+    color: white !important;
+  }
+  
+  .dark-navbar .btn-outline-success {
+    border-color: white !important;
+    color: white !important;
+  }
+  

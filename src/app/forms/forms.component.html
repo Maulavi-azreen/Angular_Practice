@@ -1,0 +1,299 @@
+<div class="container">
+    <h1 class="text-center">Template Form</h1>
+    <form #form="ngForm" class="row g-3">
+      <!-- Email -->
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail4"
+          [(ngModel)]="formData.email"
+          name="email"
+          required
+          email
+          #email="ngModel"
+        />
+        <!-- Validation Error -->
+        <div *ngIf="email.invalid && email.touched" class="text-danger">
+          Email is required and must be valid.
+        </div>
+      </div>
+  
+      <!-- Password -->
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword4"
+          [(ngModel)]="formData.password"
+          name="password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <!-- Validation Error -->
+        <div *ngIf="password.invalid && password.touched" class="text-danger">
+          Password is required and must be at least 6 characters.
+        </div>
+      </div>
+  
+      <!-- Address -->
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="1234 Main St"
+          [(ngModel)]="formData.address"
+          name="address"
+          required
+          #address="ngModel"
+        />
+        <!-- Validation Error -->
+        <div *ngIf="address.invalid && address.touched" class="text-danger">
+          Address is required.
+        </div>
+      </div>
+  
+      <!-- City -->
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputCity"
+          [(ngModel)]="formData.city"
+          name="city"
+          required
+          #city="ngModel"
+        />
+        <!-- Validation Error -->
+        <div *ngIf="city.invalid && city.touched" class="text-danger">
+          City is required.
+        </div>
+      </div>
+  
+      <!-- State -->
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select
+          id="inputState"
+          class="form-select"
+          [(ngModel)]="formData.state"
+          name="state"
+          required
+          #state="ngModel"
+        >
+          <option selected>Choose...</option>
+          <option>Maharashtra</option>
+          <option>Goa</option>
+          <option>Kerala</option>
+          <option>Karnataka</option>
+        </select>
+        <!-- Validation Error -->
+        <div *ngIf="state.invalid && state.touched" class="text-danger">
+          Please select a state.
+        </div>
+      </div>
+  
+      <!-- Zip -->
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputZip"
+          [(ngModel)]="formData.zip"
+          name="zip"
+          required
+          #zip="ngModel"
+        />
+        <!-- Validation Error -->
+        <div *ngIf="zip.invalid && zip.touched" class="text-danger">
+          Zip is required.
+        </div>
+      </div>
+  
+      <!-- Checkbox -->
+      <div class="col-12">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="gridCheck"
+            [(ngModel)]="formData.acceptTerms"
+            name="checkMeOut"
+            required
+            #acceptTerms="ngModel"
+          />
+          <label class="form-check-label" for="gridCheck">Check me out</label>
+          <!-- Validation Error -->
+          <div *ngIf="acceptTerms.invalid && acceptTerms.touched" class="text-danger">
+            You must accept the terms.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="col-12">
+        <button type="button" class="btn btn-primary me-2" (click)="onSubmit()" [disabled]="form.invalid">
+          Sign in
+        </button>
+        <button type="reset" class="btn btn-secondary" (click)="clearForm()">Reset</button>
+      </div>
+    </form>
+    <div class="container">
+        {{formValue | json}}
+      </div>
+  </div>
+<hr>
+  <div class="container mt-5">
+    <h1 class="text-center">Reactive Form</h1>
+    <div class="container">
+        <form [formGroup]="studentForm" class="row g-3">
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail4"
+              formControlName="email"
+            />
+            <div *ngIf="isFieldInvalid('email')" class="text-danger">
+              Email is required and must be valid.
+            </div>
+          </div>
+      
+          <!-- Password -->
+          <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword4"
+              formControlName="password"
+            />
+            <div *ngIf="isFieldInvalid('password')" class="text-danger">
+              Password is required and must be at least 6 characters.
+            </div>
+          </div>
+      
+          <!-- Address -->
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress"
+              placeholder="1234 Main St"
+              formControlName="address"
+            />
+            <div *ngIf="isFieldInvalid('address')" class="text-danger">
+              Address is required.
+            </div>
+          </div>
+      
+          <!-- Address 2 -->
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputAddress2"
+              placeholder="Apartment, studio, or floor"
+              formControlName="address2"
+            />
+          </div>
+      
+          <!-- City -->
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputCity"
+              formControlName="city"
+            />
+            <div *ngIf="isFieldInvalid('city')" class="text-danger">
+              City is required.
+            </div>
+          </div>
+      
+          <!-- State -->
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select" formControlName="state">
+              <option selected value="">Choose...</option>
+              <option>Maharashtra</option>
+              <option>Goa</option>
+              <option>Kerala</option>
+              <option>Karnataka</option>
+            </select>
+            <div *ngIf="isFieldInvalid('state')" class="text-danger">
+              Please select a state.
+            </div>
+          </div>
+      
+          <!-- Zip -->
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputZip"
+              formControlName="zip"
+            />
+            <div *ngIf="isFieldInvalid('zip')" class="text-danger">
+              Zip is required and must be 6 digits.
+            </div>
+          </div>
+      
+          <!-- Checkbox -->
+          <div class="col-12">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="gridCheck"
+                formControlName="acceptTerms"
+              />
+              <label class="form-check-label" for="gridCheck">Check me out</label>
+              <div *ngIf="isFieldInvalid('acceptTerms')" class="text-danger">
+                You must accept the terms.
+              </div>
+            </div>
+          </div>
+      
+          <!-- Buttons -->
+          <div class="col-12">
+            <button
+              type="button"
+              class="btn btn-primary me-2"
+              (click)="onSubmitReactive()"
+              [disabled]="studentForm.invalid"
+            >
+              Sign in
+            </button>
+            <button
+              type="reset"
+              class="btn btn-secondary"
+              (click)="clearFormReactive()"
+            >
+              Reset
+            </button>
+          </div>
+      
+          <!-- Form Debug -->
+          <div class="container mt-4">
+            <h5>Form Debug:</h5>
+            <pre>{{ studentForm.value | json }}</pre>
+          </div>
+        </form>
+      </div>
+      
+  </div>
+  

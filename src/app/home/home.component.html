@@ -1,0 +1,85 @@
+<div class="container my-4">
+    <h2 class="text-center mb-3">Ng Class</h2>
+    <!-- Row with 4 Divs -->
+    <div class="row text-center">
+      <div class="col-md-3 border py-3" [ngClass]="div1BgColor">
+        <p>Div 1</p>
+      </div>
+      <div class="col-md-3 border py-3" [ngClass]="isDiv2Active? 'bg-success text-white':'bg-warning'">
+        <p>Div 2</p>
+      </div>
+      <div class="col-md-3 border py-3" [ngClass]="num1==num2? 'bg-secondary text-white':'bg-danger'">
+        <p>Div 3</p>
+      </div>
+      <div class="col-md-3 border py-3" [ngClass]="isActive ? 'bg-primary text-white' : 'bg-danger text-white'">
+        <p>Div 4</p>
+      </div>
+    </div>
+
+    <!-- Row below Divs -->
+    <div class="row mt-4">
+      <!-- Buttons below Div 1 -->
+      <div class="col-md-3 text-center ">
+        <button class="btn btn-danger me-2" (click)="addRedClass()">Add Red</button>
+        <button class="btn btn-primary" (click)="addBlueColor()">Add Blue</button>
+      </div>
+
+      <!-- Button below Div 2 -->
+      <div class="col-md-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2Class()">Toggle</button>
+      </div>
+
+      <!-- Input boxes below Div 3 -->
+      <div class="col-md-3 text-center">
+        <input type="text" class="form-control mb-2" placeholder="Input 1" [(ngModel)]="num1">
+        <input type="text" class="form-control" placeholder="Input 2" [(ngModel)]="num2">
+      </div>
+
+      <!-- Checkbox and Select options below Div 4 -->
+      <div class="col-md-3 text-center">
+        <div class="form-check mb-2">
+          <input type="checkbox" class="form-check-input" id="checkbox1" [(ngModel)]="isActive">
+          <label class="form-check-label" for="checkbox1">Checkbox</label>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container my-4">
+    <h2 class="text-center mb-3">Ng Style</h2>
+    <div class="row mt-5">
+        <div class="col-12">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Total Marks</th>
+                <th>Progress</th>
+                <th>City</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of studentDetails; let srNo = index">
+                <td>{{ srNo + 1 }}</td>
+                <td>{{ student.studName }}</td>
+                <td>{{ student.gender }}</td>
+                <td>{{ student.totalMarks }}</td>
+                <td>
+                    <div class="progress">
+                    <div class="progress-bar" [ngStyle]="{'width': student.totalMarks+'%'}">{{ student.totalMarks }}</div>
+                </div>
+                </td>
+                <td>{{ student.city }}</td>
+                <!-- <td [ngStyle]="{'background-color': student.isActive ? 'green text-white':'red text-white'}">  
+                    mistake because u cant apply multiple classes -->
+                <td [ngStyle]="{'background-color': student.isActive ? 'green':'red','color':student.isActive ? 'white':'white'}">
+                  <span>{{student.isActive?'Active':'Inactive'}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>

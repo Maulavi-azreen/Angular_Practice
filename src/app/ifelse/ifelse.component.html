@@ -1,0 +1,63 @@
+<div class="container my-4">
+    <h2 class="text-center mb-3">if-else example</h2>
+    <!-- Row with 4 Divs -->
+    <div class="row text-center">
+        <div class="col-md-3 border py-3">
+        @if(isDiv1Visible==true){
+                <p>Div 1</p>
+        }
+    </div>
+    @if (isWarningDIvVisible) {
+        <div class="col-md-3 border py-3 bg-warning">
+        <p>Div 2</p>
+      </div>
+    }
+      @else {
+      <div class="col-md-3 border py-3 bg-danger">
+        <p>Div 2</p>
+      </div>
+    }
+      <div class="col-md-3 border py-3">
+        <p>Div 3</p>
+      </div>
+      <div class="col-md-3 border py-3">
+        @if (selectedState=='Active') {<p>Active</p>}
+        @else if (selectedState=='Inactive') {<p>Inactive</p>}
+        @else if(selectedState=='Pending'){<p>Pending</p>}
+        @else{<p>Please Select Option</p>}
+      </div>
+    </div>
+
+    <!-- Row below Divs -->
+    <div class="row mt-4">
+      <!-- Buttons below Div 1 -->
+      <div class="col-md-3 text-center ">
+        <button class="btn btn-danger me-2" (click)="showDiv1()">Show</button>
+        <button class="btn btn-danger me-2" (click)="hideDiv1()">Hide</button>
+      </div>
+
+      <!-- Button below Div 2 -->
+      <div class="col-md-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+      </div>
+
+      <!-- Input boxes below Div 3 -->
+      <div class="col-md-3 text-center">
+        <input type="text" class="form-control mb-2" placeholder="Input 1">
+        <input type="text" class="form-control" placeholder="Input 2" >
+      </div>
+
+      <!-- Checkbox and Select options below Div 4 -->
+      <div class="col-md-3 text-center">
+        <div class="form-check mb-2">
+          <select name="" id="" [(ngModel)]="selectedState">
+            <option value="">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+

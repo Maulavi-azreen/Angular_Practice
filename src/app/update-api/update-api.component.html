@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h3>Update Post</h3>
+  
+    <!-- Display Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+  
+    <!-- Display Fetched Posts -->
+    <ul class="list-group">
+      <li *ngFor="let post of postList" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ post.title }}</strong>
+          <p>{{ post.body }}</p>
+        </div>
+        <button class="btn btn-warning btn-sm" (click)="openEditForm(post)">Edit</button>
+      </li>
+    </ul>
+  
+    <!-- Bootstrap Modal for Editing -->
+    <div class="modal fade show d-block" *ngIf="selectedPost">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Post</h5>
+            <button type="button" class="btn-close" (click)="closeEditForm()"></button>
+          </div>
+          <div class="modal-body">
+            <form (submit)="updatePost(); $event.preventDefault()">
+              <div class="mb-3">
+                <label class="form-label">Title:</label>
+                <input type="text" class="form-control" [(ngModel)]="selectedPost.title" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Body:</label>
+                <textarea class="form-control" [(ngModel)]="selectedPost.body" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Update</button>
+              <button type="button" class="btn btn-secondary ms-2" (click)="closeEditForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
