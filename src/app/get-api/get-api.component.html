@@ -1,12 +1,14 @@
 <div class="container">
-<div class="row">
-    <div class="col-2">
+    <div class="row">
+      <div class="col-2">
         <button class="btn btn-success mt-5" (click)="getAllUsers()">Get All Users</button>
-    </div>
-    <div class="col-3">
-        <select class="form-select">
-            <option *ngFor="let item of userList; let i = index" [value]="item.id"></option>
+      </div>
+      <div class="col-3">
+        <select class="form-select font-dark">
+          <option *ngFor="let item of userList; let i = index" [value]="item.id">
+            {{ item.name }}
+          </option>
         </select>
+      </div>
     </div>
-</div>
-</div>
+  </div>

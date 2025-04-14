@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" [ngClass]="{'dark-navbar': isDarkMode}">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" [ngClass]="{'dark-navbar': isDarkMode}">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -35,18 +35,15 @@
         <li class="nav-item">
           <a class="nav-link active" routerLink="/update-api">UPDATE API</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/life-cycle">Life Cycle</a>
+        </li>
       </ul>
 
       <!-- Dark Mode Toggle Button -->
       <button class="btn" [ngClass]="isDarkMode ? 'btn-light' : 'btn-dark'" (click)="toggleTheme()">
         <i [ngClass]="isDarkMode ? 'bi bi-brightness-high' : 'bi bi-moon'"></i>
       </button>
-
-      <!-- Search Box -->
-      <form class="d-flex ms-3">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>

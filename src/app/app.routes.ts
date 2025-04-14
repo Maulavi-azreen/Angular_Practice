@@ -9,6 +9,7 @@ import { GetAPIComponent } from './get-api/get-api.component';
 import { PostApiComponent } from './post-api/post-api.component';
 import { UpdateApiComponent } from './update-api/update-api.component';
 import { DeleteAPIComponent } from './delete-api/delete-api.component';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,7 @@ export const routes: Routes = [
     {path:'post-api', component:PostApiComponent},
     {path:'update-api', component:UpdateApiComponent},
     {path:'delete-api', component:DeleteAPIComponent},
+    {path:'life-cycle', component:LifeCycleComponent},
 ];
 
 export const routing = RouterModule.forRoot(routes);
