@@ -10,6 +10,8 @@ import { PostApiComponent } from './post-api/post-api.component';
 import { UpdateApiComponent } from './update-api/update-api.component';
 import { DeleteAPIComponent } from './delete-api/delete-api.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+import { HostlistenerComponent } from './hostlistener/hostlistener.component';
+import { ChildComponent } from './child/child.component';
 
 
 export const routes: Routes = [
@@ -24,6 +26,8 @@ export const routes: Routes = [
     {path:'update-api', component:UpdateApiComponent},
     {path:'delete-api', component:DeleteAPIComponent},
     {path:'life-cycle', component:LifeCycleComponent},
+    {path:'hostlistener', component:HostlistenerComponent},
+    {path:'input-output', component:ChildComponent},
 ];
 
 export const routing = RouterModule.forRoot(routes);

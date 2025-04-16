@@ -1,4 +1,12 @@
 <p>learning works!</p>
 <!-- Routing using Router Service instance from .ts -->
+<div class="p-4 border rounded mb-4">
+    <p>Parent says: Sending "<strong>{{ dataToSend }}</strong>" to child</p>
+    <app-child
+      [item]="dataToSend"
+      (notifyParent)="receiveFromChild($event)">
+    </app-child>
+    <p class="mt-4">Message from child: {{ messageFromChild }}</p>
+  </div>
 
 <button class="btn btn-success text-white" (click)="navigateToHome()">Go to Home</button>
